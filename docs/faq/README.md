@@ -3,6 +3,11 @@
 往年的主页及 FAQ 亦可作参考。
 [OSH-2024](https://osh-2024.github.io/)，[OSH-2023](https://osh-2023.github.io/)，[OSH-2022](https://osh-2022.github.io/)。
 
+## 如何提问？
+
+可以在提问前阅读一下 Linux 用户协会编写的 [提问指南](https://lug.ustc.edu.cn/wiki/doc/howtoask/)，这篇
+指南不仅涵盖了关于优雅提问的一些注意事项，还有许多关于“如何尝试自己解决问题” 的实用指导。
+
 ## 推荐几个 meeting 的好去处？
 
 - 教室、1958咖啡馆，不需要提前预约；
