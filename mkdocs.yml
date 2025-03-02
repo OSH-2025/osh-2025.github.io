@@ -24,6 +24,8 @@ extra_css:
   - 'https://101.ustclug.org/css/extra.css'
 nav:
   - 首页: README.md
+  - 实验零:
+    - 零：简介: lab0/README.md
   - FAQ: faq/README.md
 extra_javascript:
   - mathjax-config.js
