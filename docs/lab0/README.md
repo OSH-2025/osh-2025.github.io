@@ -39,5 +39,14 @@ osh-2025-labs
 - lab0
   - src
     - [pic] // src 文件夹存放图片，图片名字随意
-    - ...
+  - markdown.md
+  - linux.md
+  - main.cpp
+  - bubblesort.cpp
+  - bubblesort.hpp
+  - Makefile
+  - CMakeLists.txt //如完成CMakeLists.txt选作
+  - build //如完成CMakeLists.txt选作
+    -  ...
+- .gitignore //如有
 ```
