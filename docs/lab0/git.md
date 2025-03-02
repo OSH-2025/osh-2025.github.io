@@ -51,11 +51,41 @@ $ git commit -m "wrote a readme file"
 
 这个命令的完整含义是：在本地 Git 代码库中提交了一次更新，这次更新的说明信息是「wrote a readme file」。它会将本次的修改实际保存在本地 Git 代码库中，但不会影响到远程分支。
 
-`commit` 可以一次提交很多文件，所以可以多次 `add` 不同的文件，一般会用到下面这条命令来添加当前目录的所有文件。不过，你可以在仓库目录下编写一个名为 `.gitignore` 的文本文件，并将不需要维护版本的文件/文件夹的相对路径逐行写入，这可以避免维护对项目版本无影响的文件，如人工智能项目中的模型文件就可以避免维护。
+`commit` 可以一次提交很多文件，所以可以多次 `add` 不同的文件，一般会用到下面这条命令来添加当前目录的所有文件。
 
 ```shell
 $ git add .
 ```
+
+不过，你可以在仓库目录下编写一个名为 `.gitignore` 的文本文件，并在其中指定不需要维护的文件和目录，
+这可以避免维护对项目版本无影响的文件，如人工智能项目中的模型文件就可以避免被加入到仓库中。
+
+### .gitignore 文件
+
+`.gitignore `是一个 Git 配置文件，用于 指定 Git 在版本控制中应该忽略的文件和目录，防止它们被提交到 Git 仓库。
+
+在大型项目中，`build`文件夹可能很大，而且不需要提交到 Git 仓库，这时就可以在 `.gitignore` 文件中添加 `build/` 来忽略这个文件夹。
+这样就避免了将其提交到仓库中，节省了时间和空间。
+
+新建一个 `.gitignore` 文件，将不需要提交的文件名写入，如：
+
+```shell
+
+# Byte-compiled / optimized / DLL files
+__pycache__/ # ignore __pycache__ folder
+*.py[cod] # ignore all files ending in .pyc, .pyo, .pyd (regex-like)
+*$py.class # ignore all files ending in $py.class
+
+# C extensions
+*.so # ignore all files ending in .so
+
+# Distribution / packaging
+.Python # ignore the file .Python
+build/ # ignore build folder
+
+```
+
+更详细的 `.gitignore` 规则可以参见 [Pattern Format](https://git-scm.com/docs/gitignore#_pattern_format)。
 
 ## Git 版本库的回溯和撤销回溯
 
@@ -253,36 +283,12 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 3. 如果合并有冲突，则解决冲突，并在本地提交；
 4. 没有冲突或者解决掉冲突后，再用 `git push origin <branch-name>` 推送就能成功！
 
-### .gitignore 文件
-
-`.gitignore `是一个 Git 配置文件，用于 指定 Git 在版本控制中应该忽略的文件和目录，防止它们被提交到 Git 仓库。
-
-在大型项目中，build文件夹可能很大，而且不需要提交到 Git 仓库，这时就可以在 `.gitignore` 文件中添加 `build/` 来忽略这个文件夹，这样就避免其他人每次都要下载这个文件夹，节省了时间和空间。
-
-新建一个 `.gitignore` 文件，将不需要提交的文件名写入，如：
-
-```shell
-
-# Byte-compiled / optimized / DLL files
-__pycache__/ 
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-
-```
-
-注意： github单次上传文件有大小限制，如果上传的文件超过100M，会上传失败 (git push)。 
+注意： github单次上传文件有大小限制，如果上传的文件超过100M，会上传失败 (git push)。
 
 ???question "如何上传大文件"
 
     -  使用 git-lfs (Large File Storage) 来上传大文件，具体操作请参考 [git-lfs 官方文档](https://git-lfs.github.com/)。
-    -  使用压缩工具将大文件压缩后上传。 
+    -  使用压缩工具将大文件压缩后上传。
 
 ## 练习
 

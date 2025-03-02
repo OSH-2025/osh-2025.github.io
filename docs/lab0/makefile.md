@@ -132,6 +132,7 @@ clean:
 ```
 
 其缺点体现在：
+
 1. **手动管理源文件路径**：需显式列出所有 `.cpp` 文件（如 `CORE_SRCS`），增减文件时需修改脚本。
 2. **硬编码依赖路径**：第三方库路径（-Llibs -lthird_party）和头文件路径（-Iinclude）直接写死，跨平台需调整。
 3. **平台依赖性强**：`rm` 命令在 Windows 下不兼容，需额外处理。
@@ -148,7 +149,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 自动收集所有源文件
-file(GLOB_RECURSE SRCS 
+file(GLOB_RECURSE SRCS
     "src/app.cpp"
     "src/core/*.cpp"
 )
@@ -170,13 +171,14 @@ target_link_libraries(${PROJECT_NAME} PRIVATE third_party)
 1. **自动收集源文件**：通过 file(GLOB) 或 aux_source_directory 自动收集文件，无需手动维护列表。
 2. **跨平台路径管理**：CMake 自动处理不同操作系统的路径格式（如 / vs \）。
 3. **清晰的依赖管理**：
-    - target_include_directories 管理头文件路径。
-    - target_link_libraries 直接链接库名（无需 -l 前缀），CMake 自动查找 .so 或 .dll。
+   - target_include_directories 管理头文件路径。
+   - target_link_libraries 直接链接库名（无需 -l 前缀），CMake 自动查找 .so 或 .dll。
 4. **生成多平台构建文件**：通过命令生成 Makefile、Visual Studio 或 Xcode 项目
 
-
 使用 `CMake` 的构建步骤：(以 `linux` 环境为例)
+
 - 在项目根目录下(注意 `CMakeLists.txt` 应当也在根目录下)
+
 ```bash
 mkdir build & cd build
 cmake .. & make
