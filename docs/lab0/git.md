@@ -281,8 +281,8 @@ build/
 
 ???question "如何上传大文件"
 
-    - 1. 使用 git-lfs (Large File Storage) 来上传大文件，具体操作请参考 [git-lfs 官方文档](https://git-lfs.github.com/)。
-    - 2. 使用压缩工具将大文件压缩后上传。 
+    -  使用 git-lfs (Large File Storage) 来上传大文件，具体操作请参考 [git-lfs 官方文档](https://git-lfs.github.com/)。
+    -  使用压缩工具将大文件压缩后上传。 
 
 ## 练习
 
