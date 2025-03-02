@@ -34,7 +34,7 @@
 实验零完成后，你应该创建了一个 osh-2025-labs 作业仓库，并且具有这样的结构：
 
 ```
-osh-2024-labs
+osh-2025-labs
 - README.md
 - lab0
   - src
