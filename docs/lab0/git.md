@@ -175,7 +175,7 @@ Deleted branch dev (was b17d20e).
 
 ???+ warning "注意"
 
-    learn_git 仓库不是实验需要提交的 osh-2024-labs 仓库，仅供自行练习。
+    learn_git 仓库不是实验需要提交的 osh-2025-labs 仓库，仅供自行练习。
 
 在本地的 `learn_git` 仓库下运行命令：
 
@@ -253,6 +253,37 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 3. 如果合并有冲突，则解决冲突，并在本地提交；
 4. 没有冲突或者解决掉冲突后，再用 `git push origin <branch-name>` 推送就能成功！
 
+### .gitignore 文件
+
+`.gitignore `是一个 Git 配置文件，用于 指定 Git 在版本控制中应该忽略的文件和目录，防止它们被提交到 Git 仓库。
+
+在大型项目中，build文件夹可能很大，而且不需要提交到 Git 仓库，这时就可以在 `.gitignore` 文件中添加 `build/` 来忽略这个文件夹，这样就避免其他人每次都要下载这个文件夹，节省了时间和空间。
+
+新建一个 `.gitignore` 文件，将不需要提交的文件名写入，如：
+
+```shell
+
+# Byte-compiled / optimized / DLL files
+__pycache__/ 
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+
+```
+
+注意： github单次上传文件有大小限制，如果上传的文件超过100M，会上传失败 (git push)。 
+
+???question "如何上传大文件"
+
+    - 1. 使用 git-lfs (Large File Storage) 来上传大文件，具体操作请参考 [git-lfs 官方文档](https://git-lfs.github.com/)。
+    - 2. 使用压缩工具将大文件压缩后上传。 
+
 ## 练习
 
 - Git 如何做到在不同提交状态快速切换的？可参考 [Git 教程](https://www.liaoxuefeng.com/wiki/896043488029600)。
@@ -266,7 +297,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
   ...
   ```
 
-- **「必做」**在你自己的账号下（而不是 OSH-2024 组织）创建一个新的、**私有的** GitHub 远程仓库，将其命名为 osh-2024-labs，然后邀请三位助教（id 分别为：Odeinjul，SproutNan，IrisesD）成为这个仓库的共同贡献者（collaborators），以便后续实验的批改。
+- **「必做」**在你自己的账号下（而不是 OSH-2025 组织）创建一个新的、**私有的** GitHub 远程仓库，将其命名为 osh-2025-labs，然后邀请三位助教（id 分别为：Odeinjul，fengli1702，xxxxxyang）成为这个仓库的共同贡献者（collaborators），以便后续实验的批改。
 
 ???+ question "我现在需要提交什么？"
 
