@@ -242,6 +242,7 @@ void bubbleSort(std::vector<int>& arr);
 
 - 使用 `make` 命令时，编译生成可执行文件
 - 使用 `make clean` 命令时，删除生成的可执行文件
+- 在 .gitignore 中尝试屏蔽一些内容，如 Makefile 生成的文件、可执行文件等
 
 **「选做」**
 
@@ -250,7 +251,7 @@ void bubbleSort(std::vector<int>& arr);
 
 **要求：**
 
-- 使用 `make debug` 命令时，编译生成的可执行文件在每次交换元素之后会打印出 vector 的值 (debug 信息)，与此同时，使用 `make` 命令生成的可执行文件不会打印 debug 信息
+- 使用 `make debug` 命令时，编译生成的可执行文件在每次交换元素之后会打印出 vector 的值 (debug 信息)，与此同时，使用 `make` 命令生成的可执行文件不会打印 debug 信息。
 
 **参考资料**：
 
