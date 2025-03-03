@@ -48,5 +48,5 @@ osh-2025-labs
   - CMakeLists.txt //如完成CMakeLists.txt选作
   - build //如完成CMakeLists.txt选作
     -  ...
-- .gitignore //如有
+- .gitignore 
 ```
