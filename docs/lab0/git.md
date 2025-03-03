@@ -186,7 +186,7 @@ Deleted branch dev (was b17d20e).
 - 创建 SSH Key。在用户主目录下，查找有没有 `.ssh` 目录，如果有，再查找这个目录下有没有 `id_rsa` 和 `id_rsa.pub `这两个文件。如果已经有了，可直接跳到下一步。如果没有，打开 Shell 创建 SSH Key：
 
   ```shell
-  $ ssh-keygen -t rsa -C "youremail@example.com"
+  $ ssh-keygen -t ed25519 -C "your_email@example.com"
   ```
 
   `id_rsa` 是私钥，不能泄露出去，`id_rsa.pub` 是公钥，可以放心地告诉任何人。
@@ -195,11 +195,13 @@ Deleted branch dev (was b17d20e).
 
 - 假定你有若干电脑，只要把每台电脑的 Key 都添加到 GitHub，就可以在每台电脑上往 GitHub 推送了。
 
+- 关于更详细的 SSH 密钥设置教程，请参见 [GitHub SSH Key 设置教程](https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)。
+
 ### 创建一个新的 GitHub 远程仓库
 
 尝试在你的 GitHub 账号下创建一个名为 learn_git 的 **空白** 远程仓库。
 
-具体步骤请大家自行探索完成。
+具体步骤请大家自行完成。
 
 ### 将一个空的 GitHub 远程仓库与本地仓库关联
 
@@ -278,8 +280,9 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 多人协作的工作模式通常是这样：
 
-1. 首先，可以试图用 `git push origin <branch-name>` 推送自己的修改；
-2. 如果推送失败，则因为远程分支比你的本地更新，需要先用 `git pull` 试图合并；
+0. 在开始工作之前，请使用 `git pull` 拉取远程仓库的最新代码；
+1. 然后完成工作后，可以试图用 `git push origin <branch-name>` 推送自己的修改；
+2. 如果推送失败，则因为远程分支比你的本地更新，需要先用 `git pull` 先拉取远程仓库；
 3. 如果合并有冲突，则解决冲突，并在本地提交；
 4. 没有冲突或者解决掉冲突后，再用 `git push origin <branch-name>` 推送就能成功！
 
@@ -308,3 +311,8 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ???+ question "我现在需要提交什么？"
 
     初始建立空仓库即可。具体提交内容请见下一小节。
+
+**参考资料**：
+
+1. https://git-scm.com/book/en/v2
+
