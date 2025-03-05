@@ -5,7 +5,7 @@ OSH 几乎所有实验都需要在 Linux 平台上完成、实现，所以本节
 ## 获得 Linux 环境
 
 - 在 [USTC Vlab](https://vlab.ustc.edu.cn/vm/) 上得到一个 Linux 的容器环境（并非虚拟机，*可能*有部分实验无法在其上面完成），可以通过图形界面或 VSCode 远程 SSH 等多种方式连接；
-- 使用虚拟机，Windows 用户推荐 WSL2 或 VMware，macOS 用户可以参考 [在 macOS 中使用虚拟机（By Taoky）](https://blog.taoky.moe/2019-02-23/installing-os-on-vm.html), Windows用户参考[在windows中使用wsl](https://learn.microsoft.com/zh-cn/windows/wsl/install)；
+- 使用虚拟机，Windows 用户推荐 WSL2 或 VMware，macOS 用户可以参考 [在 macOS 中使用虚拟机（By Taoky）](https://blog.taoky.moe/2019-02-23/installing-os-on-vm.html), Windows用户参考[在windows中使用wsl](https://learn.microsoft.com/zh-cn/windows/wsl/install 或https://blog.csdn.net/x777777x/article/details/141092913)；
   - 推荐使用 Ubuntu 24.04，并且 Windows 上的 WSL2 使用非常舒适，可以用于今后的课程实验（如编译原理）. 如果参加龙芯杯，用 chisel 写代码，也可以在 WSL2 上进行；
 - 本地系统换成 Linux 或双系统。**实机安装可能会存在一定的风险**，如愿意尝试请根据自己想要安装的发行版搜索相应教程。
 
