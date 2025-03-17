@@ -51,11 +51,41 @@ $ git commit -m "wrote a readme file"
 
 这个命令的完整含义是：在本地 Git 代码库中提交了一次更新，这次更新的说明信息是「wrote a readme file」。它会将本次的修改实际保存在本地 Git 代码库中，但不会影响到远程分支。
 
-`commit` 可以一次提交很多文件，所以可以多次 `add` 不同的文件，一般会用到下面这条命令来添加当前目录的所有文件。不过，你可以在仓库目录下编写一个名为 `.gitignore` 的文本文件，并将不需要维护版本的文件/文件夹的相对路径逐行写入，这可以避免维护对项目版本无影响的文件，如人工智能项目中的模型文件就可以避免维护。
+`commit` 可以一次提交很多文件，所以可以多次 `add` 不同的文件，一般会用到下面这条命令来添加当前目录的所有文件。
 
 ```shell
 $ git add .
 ```
+
+不过，你可以在仓库目录下编写一个名为 `.gitignore` 的文本文件，并在其中指定不需要维护的文件和目录，
+这可以避免维护对项目版本无影响的文件，如人工智能项目中的模型文件就可以避免被加入到仓库中。
+
+### .gitignore 文件
+
+`.gitignore `是一个 Git 配置文件，用于 指定 Git 在版本控制中应该忽略的文件和目录，防止它们被提交到 Git 仓库。
+
+在大型项目中，`build`文件夹可能很大，而且不需要提交到 Git 仓库，这时就可以在 `.gitignore` 文件中添加 `build/` 来忽略这个文件夹。
+这样就避免了将其提交到仓库中，节省了时间和空间。
+
+新建一个 `.gitignore` 文件，将不需要提交的文件名写入，如：
+
+```shell
+
+# Byte-compiled / optimized / DLL files
+__pycache__/ # ignore __pycache__ folder
+*.py[cod] # ignore all files ending in .pyc, .pyo, .pyd (regex-like)
+*$py.class # ignore all files ending in $py.class
+
+# C extensions
+*.so # ignore all files ending in .so
+
+# Distribution / packaging
+.Python # ignore the file .Python
+build/ # ignore build folder
+
+```
+
+更详细的 `.gitignore` 规则可以参见 [Pattern Format](https://git-scm.com/docs/gitignore#_pattern_format)。
 
 ## Git 版本库的回溯和撤销回溯
 
@@ -156,7 +186,7 @@ Deleted branch dev (was b17d20e).
 - 创建 SSH Key。在用户主目录下，查找有没有 `.ssh` 目录，如果有，再查找这个目录下有没有 `id_rsa` 和 `id_rsa.pub `这两个文件。如果已经有了，可直接跳到下一步。如果没有，打开 Shell 创建 SSH Key：
 
   ```shell
-  $ ssh-keygen -t rsa -C "youremail@example.com"
+  $ ssh-keygen -t ed25519 -C "your_email@example.com"
   ```
 
   `id_rsa` 是私钥，不能泄露出去，`id_rsa.pub` 是公钥，可以放心地告诉任何人。
@@ -165,11 +195,13 @@ Deleted branch dev (was b17d20e).
 
 - 假定你有若干电脑，只要把每台电脑的 Key 都添加到 GitHub，就可以在每台电脑上往 GitHub 推送了。
 
+- 关于更详细的 SSH 密钥设置教程，请参见 [GitHub SSH Key 设置教程](https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)。
+
 ### 创建一个新的 GitHub 远程仓库
 
 尝试在你的 GitHub 账号下创建一个名为 learn_git 的 **空白** 远程仓库。
 
-具体步骤请大家自行探索完成。
+具体步骤请大家自行完成。
 
 ### 将一个空的 GitHub 远程仓库与本地仓库关联
 
@@ -248,41 +280,18 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 多人协作的工作模式通常是这样：
 
-1. 首先，可以试图用 `git push origin <branch-name>` 推送自己的修改；
-2. 如果推送失败，则因为远程分支比你的本地更新，需要先用 `git pull` 试图合并；
+0. 在开始工作之前，请使用 `git pull` 拉取远程仓库的最新代码；
+1. 然后完成工作后，可以试图用 `git push origin <branch-name>` 推送自己的修改；
+2. 如果推送失败，则因为远程分支比你的本地更新，需要先用 `git pull` 先拉取远程仓库；
 3. 如果合并有冲突，则解决冲突，并在本地提交；
 4. 没有冲突或者解决掉冲突后，再用 `git push origin <branch-name>` 推送就能成功！
 
-### .gitignore 文件
-
-`.gitignore `是一个 Git 配置文件，用于 指定 Git 在版本控制中应该忽略的文件和目录，防止它们被提交到 Git 仓库。
-
-在大型项目中，build文件夹可能很大，而且不需要提交到 Git 仓库，这时就可以在 `.gitignore` 文件中添加 `build/` 来忽略这个文件夹，这样就避免其他人每次都要下载这个文件夹，节省了时间和空间。
-
-新建一个 `.gitignore` 文件，将不需要提交的文件名写入，如：
-
-```shell
-
-# Byte-compiled / optimized / DLL files
-__pycache__/ 
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-
-```
-
-注意： github单次上传文件有大小限制，如果上传的文件超过100M，会上传失败 (git push)。 
+注意： github单次上传文件有大小限制，如果上传的文件超过100M，会上传失败 (git push)。
 
 ???question "如何上传大文件"
 
-    - 1. 使用 git-lfs (Large File Storage) 来上传大文件，具体操作请参考 [git-lfs 官方文档](https://git-lfs.github.com/)。
-    - 2. 使用压缩工具将大文件压缩后上传。 
+    -  使用 git-lfs (Large File Storage) 来上传大文件，具体操作请参考 [git-lfs 官方文档](https://git-lfs.github.com/)。
+    -  使用压缩工具将大文件压缩后上传。
 
 ## 练习
 
@@ -302,3 +311,7 @@ build/
 ???+ question "我现在需要提交什么？"
 
     初始建立空仓库即可。具体提交内容请见下一小节。
+
+**参考资料**：
+
+1. https://git-scm.com/book/en/v2

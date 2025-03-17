@@ -1,4 +1,4 @@
-> 此作业尚未发布，请勿提前开始以免作业修改导致的不必要的麻烦。
+> Sidere mens eadem mutato. / 繁星纵变，智慧永恒。
 
 ## 本学期的实验安排
 
@@ -15,7 +15,7 @@
 | 实验一 | 裁剪 Linux 内核 |          Linux 启动过程、内核模块          |   make、makefile 基础    |
 | 实验二 | 编写 Shell 程序 |  fork 等 syscall、I/O 重定向、进程、中断   |  syscall 使用、中断处理  |
 | 实验三 |    并发编程     |            多路复用、进程与线程            | 多线程、I/O 相关 syscall |
-| 实验四 |      待更新       |                    待更新                    |           待更新           |
+| 实验四 |     待更新      |                   待更新                   |          待更新          |
 
 ## 欢迎来到实验零
 
@@ -34,10 +34,19 @@
 实验零完成后，你应该创建了一个 osh-2025-labs 作业仓库，并且具有这样的结构：
 
 ```
-osh-2024-labs
+osh-2025-labs
 - README.md
 - lab0
   - src
     - [pic] // src 文件夹存放图片，图片名字随意
-    - ...
+  - markdown.md
+  - linux.md
+  - main.cpp
+  - bubblesort.cpp
+  - bubblesort.hpp
+  - Makefile
+  - CMakeLists.txt //如完成CMakeLists.txt选作
+  - build //如完成CMakeLists.txt选作
+    -  ...
+- .gitignore 
 ```

@@ -13,3 +13,10 @@
 - 教室、1958咖啡馆，不需要提前预约；
 - 西区图书馆研讨室，需要在公众号「中国科大图书馆」预约使用；
 - 青年之家会议室，需要在 https://roombooking.cmet.ustc.edu.cn/ 进行预约。
+
+## 如何进行大作业选题？
+
+- 参考邢老师在课上给出的选题推荐；
+- 参考往年OSH组织内的各大作业项目；
+- 参考近年 HotOS 论文（[HotOS XIX](https://sigops.org/s/conferences/hotos/2023/)，[HotOS XVIII](https://sigops.org/s/conferences/hotos/2021/)）；
+- 参考目标应用的开发者大会前沿主题（例如 KubeCon）。
