@@ -95,6 +95,6 @@ qemu-system-x86_64 -kernel arch/x86_64/boot/bzImage
 |                          提交编译好的内核文件 `bzImage`，保证其能够完成后续实验                          | 10%  |
 |                                       `bzImage` 文件大小小于 7 MiB                                       | 10%  |
 |                                       `bzImage` 文件大小小于 6 MiB                                       | 10%  |
-|                                       `bzImage` 文件大小小于 4 MiB                                       | 10%  |
-|         **「可选」**在 `lab1/README.md` 中分析哪些选项能够切实地影响编译后的内核大小或编译的时间         |  5%  |
+|                                       `bzImage` 文件大小小于 5 MiB                                       | 10%  |
+|         **「可选」**在 `lab1/README.md` 中分析哪些选项能够切实地（较大程度地）影响编译后的内核大小或编译的时间         |  5%  |
 | **「可选」**对 linux 内核进行交叉编译 (平台自选) 并用对应版本 qemu 运行，将过程记录在`lab1/README.md` 中 |  5%  |
