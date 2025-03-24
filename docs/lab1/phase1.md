@@ -76,6 +76,14 @@ make -j $((`nproc`-1))
 qemu-system-x86_64 -kernel arch/x86_64/boot/bzImage
 ```
 
+运行后，你可能会看到如下的错误信息：
+
+```bash
+ ---[ end Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0) ]---
+```
+
+这是正常现象，由于未挂载初始内存盘会导致内核崩溃，我们将在下一小节解决这个问题。如果在启动时可以看到相应的启动信息，则说明内核已成功编译并正常运行。
+
 ???+ info "提示"
 
     使用`Ctrl-a x`可以退出qemu type.
