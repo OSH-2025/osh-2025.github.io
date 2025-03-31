@@ -225,3 +225,7 @@ std::vector<std::string> split(std::string s, const std::string &delimiter) {
   return res;
 }
 ```
+
+## 参考链接
+- [man 手册](https://man7.org/linux/man-pages/)
+- [bash 文档](https://www.gnu.org/software/bash/manual/bash.html)
