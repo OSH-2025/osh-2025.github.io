@@ -8,15 +8,15 @@
 
 ```shell
 $ history 3
-  843  echo osh-2024
+  843  echo osh-2025
   844  echo osh
   845  history 3
 $ !843
-echo osh-2024
-osh-2024
+echo osh-2025
+osh-2025
 $ !!
-echo osh-2024
-osh-2024
+echo osh-2025
+osh-2025
 ```
 
 请为你的 shell 实现对历史命令的处理，支持 `!n`、`!!` 和 `history n` 命令，且 `history n` 的输出请尽可能与 bash 相同。
