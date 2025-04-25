@@ -5,8 +5,10 @@
 每次创建新线程需要额外的开销，请自行思考设计，是否可以预先创建一组线程，在请求到达时分配给其中一个，以减少创建的额外开销。
 
 参考资料：
+
 1. pthread 即 POSIX 标准线程库（POSIX Threads），是一个用于多线程编程的跨平台 C 语言库。它提供了一组 API，用于创建和管理线程，以及实现线程间的同步和通信。
 2. thread 库是 C++ 标准库的一部分，从 C++11 开始引入，提供了对多线程编程的支持。它封装了底层的线程实现（如 POSIX pthread），为开发者提供了更高层次、更易用的线程管理接口
+
 - POSIX thread (pthread) libraries：<https://www.cs.cmu.edu/afs/cs/academic/class/15492-f07/www/pthreads.html>
 - thread libraries: <https://en.cppreference.com/w/cpp/thread/thread>
 
