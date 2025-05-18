@@ -30,7 +30,7 @@
 
 ### I/O 复用
 
-Linux 提供 `select`、`epoll` 等高级的 I/O 复用模式，请自行了解相关概念，使用 `select` 或 `epoll` 等提高服务器并发性能。相关文档请查阅互联网，或参考 2023 年的双人聊天室示例代码：<https://osh-2022.github.io/lab3/#select-4>。
+Linux 提供 `select`、`epoll` 等高级的 I/O 复用模式，请自行了解相关概念，使用 `select` 或 `epoll` 等提高服务器并发性能。相关文档请查阅互联网，或参考 2022 年的双人聊天室示例代码：<https://osh-2022.github.io/lab3/#select-4>。
 
 ### async/await
 
