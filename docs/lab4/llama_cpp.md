@@ -53,16 +53,13 @@ llama.cpp 所支持的模型列表可以在[这里](https://github.com/ggml-org/
 
 常见的 LLM 模型大小有 1B、7B、13B 等，一般来说，模型规模越大，生成的质量越好，但是推理时所需内存也会随之增长。为避免频繁出现 OOM 的现象，我们推荐从较小的 LLM 开始调试。
 
-
-### TODO NOT DONE FROM HERE
 ### 分布式部署
 除了大部分计算架构的后端，
 llama.cpp 还通过 RPC 后端的设计允许多个不同架构、不同平台的设备在一起提供算力，这使得在家用设备上分布式部署并推理大规模 LLM 成为可能。
 
 以下是 llama.cpp 通过 RPC 后端进行分布式推理的架构示意图，
-通过在机器上运行 rpc-server 和本地后端（例如 CUDA、Metal等）与主机上的 RPC 后端通过 TCP 进行通信
-主机上运行 RPC 后端，
-**此功能目前仍在测试中，请谨慎使用。**
+**从机**上运行本地计算后端（例如 CUDA、Metal等），通过 rpc-server 与**主机**上的 RPC 后端进行 TCP 通信来提供推理算力支持。将多个设备的算力与内存结合起来，实现分布式推理。
+
 
 ```mermaid
 flowchart TD
@@ -86,10 +83,22 @@ flowchart TD
     end
     style hostn stroke:#66,stroke-width:2px,stroke-dasharray: 5 5
 ```
+以下是启用分布式部署、推理功能的简短示例，在编译时还应加上对应后端的编译选项。
+**此功能目前仍在测试中，请谨慎使用。**
 
-【RPC架构描述 - https://github.com/ggml-org/llama.cpp/tree/master/tools/rpc】
+```bash
+# 在每台机器上编译支持 RPC 的 llama.cpp
+mkdir build-rpc-cuda
+cd build-rpc-cuda
+cmake .. -DGGML_RPC=ON  #-DGGML_CUDA=ON, -DGGML_METAL=ON, ...
+cmake --build . --config Release
 
-【RPC教程 - 编译带RPC的版本，其他host运行rpc-server，main host运行添加rpc参数】
+# 在从机上启动 rpc-server 与对应后端
+$ bin/rpc-server -p 50052
+
+# 在主机上启动使用 RPC 的 llama-cli，
+$ bin/llama-cli -m [model_path] -p [prompt] --rpc 192.168.88.10:50052,192.168.88.11:50052,...
+```
 
 ### 性能评估以及优化
 你还可以使用 [llama-bench](https://github.com/ggml-org/llama.cpp/blob/master/tools/llama-bench), [llama-perplexity](https://github.com/ggml-org/llama.cpp/blob/master/tools/perplexity) 对 LLM 的推理性能以及生成质量进行评估。
@@ -100,11 +109,6 @@ flowchart TD
 
 ## 参考资料
 https://github.com/ggml-org/llama.cpp
-
-https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md
-
-https://github.com/ggml-org/llama.cpp/tree/master/tools/rpc
-
 
 ## 番外
 本实验原本预期添加有关于 vllm 的内容，但是 llama.cpp 更酷一些！
