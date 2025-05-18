@@ -47,18 +47,45 @@ brew install llama.cpp
 
 ### 使用
 你可以使用 [llama-cli](https://github.com/ggml-org/llama.cpp/tree/master/tools/main),
-[llama-run](https://github.com/ggml-org/llama.cpp/tree/master/tools/run), [llama-simple](https://github.com/ggml-org/llama.cpp/tree/master/examples/simple)来与 LLM 进行交互，
+[llama-run](https://github.com/ggml-org/llama.cpp/tree/master/tools/run), [llama-simple](https://github.com/ggml-org/llama.cpp/tree/master/examples/simple)来与部署的 LLM 进行交互，
 
 llama.cpp 所支持的模型列表可以在[这里](https://github.com/ggml-org/llama.cpp?tab=readme-ov-file#text-only)找到，我们推荐首先尝试较为主流的 LLaMA 2、LLaMA 3、 Mistral、Qwen、ChatGLM 等系列模型。
 
-常见的 LLM 模型大小有 7B、13B 等，一般来说，模型规模越大，生成的质量越好，但是推理时所需内存也会随之增长。
-为避免频繁出现 OOM 的现象，我们推荐使用较小的 LLM 开始调试。
+常见的 LLM 模型大小有 1B、7B、13B 等，一般来说，模型规模越大，生成的质量越好，但是推理时所需内存也会随之增长。为避免频繁出现 OOM 的现象，我们推荐从较小的 LLM 开始调试。
 
 
 ### TODO NOT DONE FROM HERE
 ### 分布式部署
+除了大部分计算架构的后端，
+llama.cpp 还通过 RPC 后端的设计允许多个不同架构、不同平台的设备在一起提供算力，这使得在家用设备上分布式部署并推理大规模 LLM 成为可能。
 
-llama.cpp 通过 RPC 后端的设计提供了分布式的推理功能，使得多个不同架构、不同平台的设备能够联合工作，也使得在家用设备上部署大规模的 LLM成为可能。**此功能目前仍在测试中，请谨慎使用。**
+以下是 llama.cpp 通过 RPC 后端进行分布式推理的架构示意图，
+通过在机器上运行 rpc-server 和本地后端（例如 CUDA、Metal等）与主机上的 RPC 后端通过 TCP 进行通信
+主机上运行 RPC 后端，
+**此功能目前仍在测试中，请谨慎使用。**
+
+```mermaid
+flowchart TD
+    rpcb<-->|TCP|srva
+    rpcb<-->|TCP|srvb
+    rpcb<-.->|TCP|srvn
+    subgraph hostn[Host N]
+    srvn[rpc-server]<-.->backend3["Backend (CUDA,Metal,etc.)"]
+    end
+    subgraph hostb[Host B]
+    srvb[rpc-server]<-->backend2["Backend (CUDA,Metal,etc.)"]
+    end
+    subgraph hosta[Host A]
+    srva[rpc-server]<-->backend["Backend (CUDA,Metal,etc.)"]
+    end
+    subgraph host[Main Host]
+    local1["CUDA Backend"]<-->ggml[llama-cli]
+    local2["Metal Backend"]<-->ggml[llama-cli]
+    local3["Other Backend"]<-->ggml[llama-cli]
+    ggml[llama-cli]<-->rpcb[RPC backend]
+    end
+    style hostn stroke:#66,stroke-width:2px,stroke-dasharray: 5 5
+```
 
 【RPC架构描述 - https://github.com/ggml-org/llama.cpp/tree/master/tools/rpc】
 
@@ -67,6 +94,7 @@ llama.cpp 通过 RPC 后端的设计提供了分布式的推理功能，使得�
 ### 性能评估以及优化
 你还可以使用 [llama-bench](https://github.com/ggml-org/llama.cpp/blob/master/tools/llama-bench), [llama-perplexity](https://github.com/ggml-org/llama.cpp/blob/master/tools/perplexity) 对 LLM 的推理性能以及生成质量进行评估。
 
+以下是一些在使用 llama.cpp 部署 LLM 时相关常见参数的解释：
 【在本实验中，我们主要关注 llama.cpp 的性能与承载能力方面。】
 【与性能有关的常见参数解释】
 
