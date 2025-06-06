@@ -50,12 +50,12 @@ nav:
       - 二：必做部分: lab3/required.md
       - 三：选做部分: lab3/optional.md
       - 四：测试及评分: lab3/score.md
-  - FAQ: faq/README.md
   - 实验四:
       - 零：简介: lab4/README.md
       - 一：Ray: lab4/ray.md
       - 二：Ceph: lab4/ceph.md
       - 三：Llama_cpp: lab4/llama_cpp.md
+  - FAQ: faq/README.md
 extra_javascript:
   - mathjax-config.js
   - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
